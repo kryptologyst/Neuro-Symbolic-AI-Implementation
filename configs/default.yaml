@@ -1,0 +1,68 @@
+# Neuro-Symbolic AI Configuration
+
+# Model Configuration
+model:
+  type: "symbolic"  # Options: simple, symbolic, graph
+  input_dim: 2
+  hidden_dim: 64
+  output_dim: 1
+  dropout: 0.1
+
+# Data Configuration
+data:
+  type: "sum_threshold"  # Options: sum_threshold, xor, circle
+  n_samples: 1000
+  n_features: 2
+  noise_level: 0.1
+  test_size: 0.2
+  val_size: 0.2
+
+# Training Configuration
+training:
+  epochs: 100
+  batch_size: 32
+  learning_rate: 0.001
+  weight_decay: 1e-4
+  patience: 10
+  device: "auto"  # Options: auto, cuda, mps, cpu
+
+# Evaluation Configuration
+evaluation:
+  metrics: ["accuracy", "precision", "recall", "f1", "auc"]
+  baseline_models: ["logistic_regression", "random_forest"]
+  save_predictions: true
+  save_probabilities: true
+
+# Visualization Configuration
+visualization:
+  figsize: [10, 8]
+  dpi: 300
+  style: "seaborn-v0_8"
+  save_plots: true
+  show_plots: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/experiment.log"
+
+# Paths Configuration
+paths:
+  data_dir: "data"
+  results_dir: "results"
+  assets_dir: "assets"
+  checkpoints_dir: "checkpoints"
+  logs_dir: "logs"
+
+# Reproducibility Configuration
+reproducibility:
+  random_seed: 42
+  deterministic: true
+  benchmark: false
+
+# Safety Configuration
+safety:
+  disclaimer: true
+  research_only: true
+  not_for_production: true
